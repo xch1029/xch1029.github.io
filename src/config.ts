@@ -9,7 +9,7 @@ export const siteConfig = {
     juejin: "https://juejin.cn/user/4089838984504760",
     linkedin: "",
     twitter: "",
-    github: "",
+    github: "https://github.com/xch1029",
   },
   aboutMe:
     "10+年高级前端开发经验，长期负责业务核心系统与复杂项目落地，覆盖后台管理系统、零售数字化系统、小程序、APP 配套页面、SaaS 平台、可视化大屏与问卷类产品。熟悉从需求分析、方案设计到开发交付的完整流程，能独立推进项目，也能在多人协作中承担主力开发角色，关注工程质量、交互体验与开发效率提升。",

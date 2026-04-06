@@ -4,198 +4,59 @@ import { siteConfig } from "../config";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+
+const socialItems = [
+  siteConfig.social?.phone && {
+    label: `手机号：${siteConfig.social.phone}`,
+    href: `tel:${siteConfig.social.phone}`,
+  },
+  siteConfig.social?.email && {
+    label: `邮箱：${siteConfig.social.email}`,
+    href: `mailto:${siteConfig.social.email}`,
+  },
+  siteConfig.social?.juejin && {
+    label: "掘金：juejin.cn/user/4089838984504760",
+    href: siteConfig.social.juejin,
+  },
+  siteConfig.social?.github && {
+    label: "GitHub：github.com/xch1029",
+    href: siteConfig.social.github,
+  },
+].filter(Boolean);
 ---
 
 <footer class="relative bg-gray-50 border-t border-gray-200">
   <div class="mx-auto max-w-6xl px-6 py-12 lg:px-8">
     <div
-      class="flex flex-col md:flex-row md:items-center md:justify-between gap-8"
+      class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between"
     >
-      <div class="flex flex-col gap-4">
+      <div class="flex max-w-2xl flex-col gap-4">
         <h3 class="text-2xl font-bold text-gray-800">
           {siteConfig.name}
         </h3>
         <p class="text-base text-gray-600">
           {siteConfig.title}
         </p>
-        <div class="flex gap-x-6">
-          {
-            siteConfig.social?.juejin && (
-              <a
-                href={siteConfig.social.juejin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Juejin"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
-                style={`--accent-color: ${siteConfig.accentColor}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h-6 w-6"
+        {
+          socialItems.length > 0 && (
+            <div class="flex flex-col gap-2 text-sm text-gray-600">
+              {socialItems.map((item) => (
+                <a
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  class="transition-colors duration-300 hover:text-[var(--accent-color)]"
+                  style={`--accent-color: ${siteConfig.accentColor}`}
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M12 3l7 6l-2 1.5L12 6L7 10.5L5 9"></path>
-                  <path d="M12 10l5 4l-2 1.5L12 13L9 15.5L7 14"></path>
-                  <path d="M12 17l3 2.5L12 21l-3 -1.5L12 17z"></path>
-                </svg>
-              </a>
-            )
-          }
-          {
-            siteConfig.social?.phone && (
-              <a
-                href={`tel:${siteConfig.social.phone}`}
-                aria-label="Phone"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
-                style={`--accent-color: ${siteConfig.accentColor}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h-6 w-6"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path
-                    d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -16 -16a2 2 0 0 1 2 -2"
-                  ></path>
-                </svg>
-              </a>
-            )
-          }
-          {
-            siteConfig.social?.email && (
-              <a
-                href={`mailto:${siteConfig.social.email}`}
-                aria-label="邮箱"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
-                style={`--accent-color: ${siteConfig.accentColor}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h-6 w-6"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path
-                    d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
-                  ></path>
-                  <path d="M3 7l9 6l9 -6"></path>
-                </svg>
-              </a>
-            )
-          }
-          {
-            siteConfig.social?.linkedin && (
-              <a
-                href={siteConfig.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="领英"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
-                style={`--accent-color: ${siteConfig.accentColor}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h-6 w-6"
-                  ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                    d="M8 11v5"></path><path d="M8 8v.01"></path><path d="M12 16v-5"
-                  ></path><path d="M16 16v-3a2 2 0 1 0 -4 0"></path><path
-                    d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"
-                  ></path></svg
-                >
-              </a>
-            )
-          }
-          {
-            siteConfig.social?.twitter && (
-              <a
-                href={siteConfig.social.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
-                style={`--accent-color: ${siteConfig.accentColor}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h-6 w-6"
-                  ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                    d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path
-                    d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg
-                >
-              </a>
-            )
-          }
-          {
-            siteConfig.social?.github && (
-              <a
-                href={siteConfig.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
-                style={`--accent-color: ${siteConfig.accentColor}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h-6 w-6"
-                  ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
-                  ></path></svg
-                >
-              </a>
-            )
-          }
-        </div>
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          )
+        }
       </div>
 
-      <div class="hidden md:block flex flex-col md:items-end gap-4">
+      <div class="hidden md:flex md:flex-col md:items-end gap-4">
         <nav class="flex gap-x-8">
           <a
             href="#about"
@@ -240,7 +101,6 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
     </div>
   </div>
 
-  <!-- Decorative pattern -->
   <div class="absolute inset-0 -z-10 overflow-hidden">
     <svg
       aria-hidden="true"
