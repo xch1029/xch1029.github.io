@@ -134,14 +134,12 @@ import { siteConfig } from "../config";
       <h2
         class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 animate-fade-in"
       >
-        Hello! 👋
+        你好，我是
       </h2>
       <h1
         class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
       >
-        I'm <span style={{ color: siteConfig.accentColor }}
-          >{siteConfig.name}</span
-        >
+        <span style={{ color: siteConfig.accentColor }}>{siteConfig.name}</span>
       </h1>
       <p
         class="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 animate-fade-in animation-delay-400"
@@ -154,10 +152,64 @@ import { siteConfig } from "../config";
     class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 animate-fade-in animation-delay-600"
   >
     {
+      siteConfig.social?.juejin && (
+        <a
+          href={siteConfig.social.juejin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Juejin"
+          class="transition-colors duration-300 hover:text-[var(--accent-color)]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 3l7 6l-2 1.5L12 6L7 10.5L5 9" />
+            <path d="M12 10l5 4l-2 1.5L12 13L9 15.5L7 14" />
+            <path d="M12 17l3 2.5L12 21l-3 -1.5L12 17z" />
+          </svg>
+        </a>
+      )
+    }
+    {
+      siteConfig.social?.phone && (
+        <a
+          href={`tel:${siteConfig.social.phone}`}
+          aria-label="Phone"
+          class="transition-colors duration-300 hover:text-[var(--accent-color)]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -16 -16a2 2 0 0 1 2 -2" />
+          </svg>
+        </a>
+      )
+    }
+    {
       siteConfig.social?.email && (
         <a
           href={`mailto:${siteConfig.social.email}`}
-          aria-label="Email"
+          aria-label="邮箱"
           class="transition-colors duration-300 hover:text-[var(--accent-color)]"
         >
           <svg
@@ -185,7 +237,7 @@ import { siteConfig } from "../config";
           href={siteConfig.social.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="LinkedIn"
+          aria-label="领英"
           class="transition-colors duration-300 hover:text-[var(--accent-color)]"
         >
           <svg
@@ -218,7 +270,7 @@ import { siteConfig } from "../config";
           href={siteConfig.social.twitter}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Twitter"
+          aria-label="X"
           class="transition-colors duration-300 hover:text-[var(--accent-color)]"
         >
           <svg
